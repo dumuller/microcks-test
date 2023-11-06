@@ -1,0 +1,23 @@
+openapi: 3.0.0
+info:
+  title: Exemplo de API de Produtos
+  version: 1.0.0
+paths:
+  /produtos:
+    get:
+      summary: Lista de Produtos
+      description: Retorna a lista de produtos disponíveis.
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              example:
+                - id: 1
+                  nome: Produto A
+                  preço: 19.99
+                - id: 2
+                  nome: Produto B
+                  preço: 24.99
+        404:
+          description: Não encontrado

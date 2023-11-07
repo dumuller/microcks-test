@@ -31,6 +31,40 @@ paths:
                     preco: 24.99
         404:
           description: Não encontrado
+  /produtos/{id}:
+    summary: Localiza o produto pelo identificador
+    get:
+      operationId: getProdutoById
+      parameters:
+        - examples:
+            1:
+              value: 1
+            2:
+              value: 2
+          name: id
+          description: identificador do produto
+          schema:
+            type: integer
+          in: path
+          required: true
+      responses:
+        200:
+          description: Sucesso ao buscar produto
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Produto'
+              examples:
+                1:
+                  value:
+                    id: 1
+                    nome: Produto A
+                    preco: 19.99
+                2:
+                  value:
+                    id: 2
+                    nome: Produto B
+                    preco: 24.99
 components:
   schemas:
     Produto:

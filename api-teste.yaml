@@ -4,20 +4,48 @@ info:
   version: 1.0.0
 paths:
   /produtos:
+    summary: Operações sobre produtos
     get:
+      tags:
+        - produtos
       summary: Lista de Produtos
       description: Retorna a lista de produtos disponíveis.
+      operationId: getProdutos
       responses:
         200:
           description: Sucesso
           content:
             application/json:
-              example:
-                - id: 1
-                  nome: Produto A
-                  preço: 19.99
-                - id: 2
-                  nome: Produto B
-                  preço: 24.99
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Produto'
+              examples:
+                produtos_json:
+                  value:
+                  - id: 1
+                    nome: Produto A
+                    preco: 19.99
+                  - id: 2
+                    nome: Produto B
+                    preco: 24.99
         404:
           description: Não encontrado
+components:
+  schemas:
+    Produto:
+      properties:
+        id:
+          description: Identificador do produto
+          type: integer
+        nome:
+          description: Nome do produto
+          type: string
+        preco:
+          description: Valor de venda do produto
+          type: number
+          format: double
+      example:
+        id: 1
+        nome: Cadeira flexform
+        preco: 100.00
